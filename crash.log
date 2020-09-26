@@ -1,0 +1,92 @@
+PID 10184 received SIGSEGV for address: 0xdb9c2fec
+SymInit: Symbol-SearchPath: '.;C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions;C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions\node_modules\electron\dist;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 530, UserName: 'deepakk'
+OS-Version: 10.0.20185 () 0x100-0x1
+C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions\node_modules\segfault-handler\src\StackWalker.cpp (941): StackWalker::ShowCallstack
+C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions\node_modules\segfault-handler\src\segfault-handler.cpp (242): segfault_handler
+00007FFEDE3EB5BA (ntdll): (filename not available): RtlNtStatusToDosErrorNoTeb
+00007FFEDE3A7E66 (ntdll): (filename not available): RtlRaiseException
+00007FFEDE3A7DAE (ntdll): (filename not available): RtlRaiseException
+00007FFEDB9C2FEC (KERNELBASE): (filename not available): RaiseException
+00007FFEDD1C0860 (RPCRT4): (filename not available): RpcRaiseException
+00007FFEDD1C0824 (RPCRT4): (filename not available): RpcRaiseException
+00007FFEDD1BF230 (RPCRT4): (filename not available): RpcServerInterfaceGroupClose
+00007FFEDD1C3794 (RPCRT4): (filename not available): NdrGetBuffer
+00007FFEDD1A1DDB (RPCRT4): (filename not available): NdrAsyncClientCall
+00007FFEDD27D81D (RPCRT4): (filename not available): Ndr64AsyncServerCallAll
+00007FFEDD1A20DC (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFEDD1A2022 (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFEDA68CDD4 (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDA68CD0D (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDA68CA17 (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDD1B28CD (RPCRT4): (filename not available): NdrFixedArrayUnmarshall
+00007FFEDD1B275A (RPCRT4): (filename not available): NdrFixedArrayUnmarshall
+00007FFEDD1B8446 (RPCRT4): (filename not available): NdrCorrelationFree
+00007FFEDD1BB76A (RPCRT4): (filename not available): I_RpcTransConnectionReallocPacket
+00007FFEDD1BB537 (RPCRT4): (filename not available): I_RpcTransConnectionReallocPacket
+00007FFEDD1BB438 (RPCRT4): (filename not available): I_RpcTransConnectionReallocPacket
+00007FFEDD1BC090 (RPCRT4): (filename not available): RpcAsyncCancelCall
+00007FFEDA68CB4E (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDA681FDF (WINSTA): (filename not available): WinStationFreeEXECENVDATAEX
+00007FFEDA681F85 (WINSTA): (filename not available): WinStationFreeEXECENVDATAEX
+00007FFEDA6822E2 (WINSTA): (filename not available): WinStationFreeEXECENVDATAEX
+00007FFEDA6972E1 (WINSTA): (filename not available): WinStationUnRegisterSessionNotification
+00007FFED9232261 (WTSAPI32): (filename not available): WTSUnRegisterSessionNotification
+00007FF6B4CFAE1A (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B4CFAC0E (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B4CFA5F8 (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B49BA0AD (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B49BD730 (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B49BE02C (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B49B9BBF (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B48975AF (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B4897103 (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B5A29D4B (electron): (filename not available): IsSandboxedProcess
+00007FF6B3B2BCCE (electron): (filename not available): v8::Location::GetColumnNumber
+00007FF6B2F0149F (electron): (filename not available): Ordinal0
+00007FF6B8F9BD52 (electron): (filename not available): uv_random
+00007FFEDCE230F4 (KERNEL32): (filename not available): BaseThreadInitThunk
+00007FFEDE3AA52B (ntdll): (filename not available): RtlUserThreadStart
+PID 10184 received SIGSEGV for address: 0xdb9c2fec
+SymInit: Symbol-SearchPath: '.;C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions;C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions\node_modules\electron\dist;C:\WINDOWS;C:\WINDOWS\system32;SRV*C:\websymbols*http://msdl.microsoft.com/download/symbols;', symOptions: 530, UserName: 'deepakk'
+OS-Version: 10.0.20185 () 0x100-0x1
+C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions\node_modules\segfault-handler\src\StackWalker.cpp (941): StackWalker::ShowCallstack
+C:\Users\deepakk\Desktop\ShellHacks2020CovidClosedCaptions\node_modules\segfault-handler\src\segfault-handler.cpp (242): segfault_handler
+00007FFEDE3EB5BA (ntdll): (filename not available): RtlNtStatusToDosErrorNoTeb
+00007FFEDE3A7E66 (ntdll): (filename not available): RtlRaiseException
+00007FFEDE3A7DAE (ntdll): (filename not available): RtlRaiseException
+00007FFEDB9C2FEC (KERNELBASE): (filename not available): RaiseException
+00007FFEDD1C0860 (RPCRT4): (filename not available): RpcRaiseException
+00007FFEDD1C0824 (RPCRT4): (filename not available): RpcRaiseException
+00007FFEDD1BF230 (RPCRT4): (filename not available): RpcServerInterfaceGroupClose
+00007FFEDD1C3794 (RPCRT4): (filename not available): NdrGetBuffer
+00007FFEDD1A1DDB (RPCRT4): (filename not available): NdrAsyncClientCall
+00007FFEDD27D81D (RPCRT4): (filename not available): Ndr64AsyncServerCallAll
+00007FFEDD1A20DC (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFEDD1A2022 (RPCRT4): (filename not available): RpcAsyncCompleteCall
+00007FFEDA68CDD4 (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDA68CD0D (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDA68CA17 (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDD1B28CD (RPCRT4): (filename not available): NdrFixedArrayUnmarshall
+00007FFEDD1B275A (RPCRT4): (filename not available): NdrFixedArrayUnmarshall
+00007FFEDD1B8446 (RPCRT4): (filename not available): NdrCorrelationFree
+00007FFEDD1BB76A (RPCRT4): (filename not available): I_RpcTransConnectionReallocPacket
+00007FFEDD1BB537 (RPCRT4): (filename not available): I_RpcTransConnectionReallocPacket
+00007FFEDD1BB438 (RPCRT4): (filename not available): I_RpcTransConnectionReallocPacket
+00007FFEDD1BC090 (RPCRT4): (filename not available): RpcAsyncCancelCall
+00007FFEDA68CB4E (WINSTA): (filename not available): WinStationUnRegisterNotificationEvent
+00007FFEDA681FDF (WINSTA): (filename not available): WinStationFreeEXECENVDATAEX
+00007FFEDA681F85 (WINSTA): (filename not available): WinStationFreeEXECENVDATAEX
+00007FFEDA6822E2 (WINSTA): (filename not available): WinStationFreeEXECENVDATAEX
+00007FFEDA6972E1 (WINSTA): (filename not available): WinStationUnRegisterSessionNotification
+00007FFED9232261 (WTSAPI32): (filename not available): WTSUnRegisterSessionNotification
+00007FF6B77076DB (electron): (filename not available): uv_fs_poll_getpath
+00007FF6B770764A (electron): (filename not available): uv_fs_poll_getpath
+00007FF6B54704D4 (electron): (filename not available): uv_mutex_unlock
+00007FF6B54703C0 (electron): (filename not available): uv_mutex_unlock
+00007FF6B4897702 (electron): (filename not available): v8_inspector::V8StackTraceId::ToString
+00007FF6B5A2A1CA (electron): (filename not available): IsSandboxedProcess
+00007FF6B3B2BCCE (electron): (filename not available): v8::Location::GetColumnNumber
+00007FF6B2F0149F (electron): (filename not available): Ordinal0
+00007FF6B8F9BD52 (electron): (filename not available): uv_random
+00007FFEDCE230F4 (KERNEL32): (filename not available): BaseThreadInitThunk
+00007FFEDE3AA52B (ntdll): (filename not available): RtlUserThreadStart

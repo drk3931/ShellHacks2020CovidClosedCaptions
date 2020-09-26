@@ -1,0 +1,15 @@
+{
+    "devDependencies": {
+        "electron": "^10.1.2",
+        "electron-rebuild": "^2.0.3"
+    },
+    "name": "shell-hacks-2020-cc",
+    "version": "0.1.0",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron ."
+    },
+    "dependencies": {
+        "naudiodon": "^2.2.4"
+    }
+}
