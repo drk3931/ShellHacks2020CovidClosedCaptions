@@ -50,18 +50,8 @@ function onStreaming(stream) {
         audioBitsPerSecond: 16000,
         mimeType: "audio/webm;codecs=opus"
     }
+    
 
-    let wavRec = new Recorder(stream);
-
-    recorder.record();
-
-    setTimeout(()=>{
-        recorder.stop();
-    },5000)
-
-
-
-    /*
     let recorder = new MediaRecorder(stream);
     recorder.ondataavailable = (e) => {
         chunks.push(e.data)
@@ -80,7 +70,7 @@ function onStreaming(stream) {
            
 
     }
-    */
+    
 
   
 
