@@ -3,6 +3,8 @@ import wave
 import speech_recognition as sr
 from threading import Thread
 from queue import Queue
+import asyncio
+import websockets
 
 
 r = sr.Recognizer()
@@ -34,7 +36,7 @@ stream = p.open(format = pyaudio.paInt16,
 def sendToGoogleImproved(stream):
     recorded_frames = []
 
-
+textOutput = []
 
 def sendToGoogle(stream):
     recorded_frames = []
@@ -55,18 +57,25 @@ def sendToGoogle(stream):
     with file as source:
         audio = r.record(source)
     try:
-        text = r.recognize_google(audio)
         print(text)
+        text = r.recognize_google(audio)
+        return text
     except sr.UnknownValueError as e:
-        print("...")
+        return ""
 
-def processStream(streamHandle):
+async def processStream(websocket,path):
+    global streamHandle
     while True:
-        sendToGoogle(streamHandle)
+        text = sendToGoogle(streamHandle)
+        await websocket.send(text)
+    
+    
+start_server = websockets.serve(processStream, 'localhost', 3001)
+asyncio.get_event_loop().run_until_complete(start_server)
+asyncio.get_event_loop().run_forever()
 
-    
-    
-processStream(stream)
+
+
 
 
 

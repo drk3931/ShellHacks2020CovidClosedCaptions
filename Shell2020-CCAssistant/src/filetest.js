@@ -18,7 +18,7 @@ async function main() {
       content: audioBytes,
     };
     const config = {
-        encoding: 'LINEAR16',
+        encoding: 'OGG_OPUS',
         sampleRateHertz: 16000,
         languageCode: 'en-US',
     };
