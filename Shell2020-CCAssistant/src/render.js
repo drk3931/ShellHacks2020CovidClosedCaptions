@@ -5,7 +5,7 @@ const { ipcRenderer } = require('electron');
 
 
 const videoFeed = document.querySelector('video');
-const translateButton = document.getElementById('translateButton');
+const transtaleOption = document.getElementById('transtaleOption');
 const sourceButton = document.getElementById('sourceButton');
 sourceButton.onclick = getSources;
 
@@ -34,9 +34,9 @@ async function setSource(src) {
 
     myWindow.webContents.send('my-cool-log-event', 'Yay');
 
-   
-    
-    
+
+
+
 }
 
 
@@ -57,5 +57,3 @@ async function getSources() {
     sourceOptionsMenu.popup();
 
 }
-
-
