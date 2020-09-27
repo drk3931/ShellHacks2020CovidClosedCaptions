@@ -4,8 +4,6 @@ Intallation Details: Python
 python 3.7 is installed
 pip install PyAudio-0.2.11-cp37-cp37m-win_amd64.whl
 
-
-
 PyAudio-0.2.11-cp37-cp37m-win_amd64
 
 
