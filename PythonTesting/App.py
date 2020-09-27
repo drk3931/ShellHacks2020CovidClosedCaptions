@@ -39,7 +39,7 @@ def sendToGoogle(stream):
     chunk = 1024
     global rate
     global channelcount
-    record_seconds = 5
+    record_seconds = 10
     for i in range(0, int(rate / chunk * record_seconds)):
         data = stream.read(chunk)
         recorded_frames.append(data) 
