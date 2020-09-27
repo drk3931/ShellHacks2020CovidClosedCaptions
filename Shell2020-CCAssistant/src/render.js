@@ -3,6 +3,8 @@ const { desktopCapturer, remote } = require('electron');
 const { Menu,dialog } = remote;
 const { ipcRenderer } = require('electron');
 
+const {Recorder} = require('recorder-js');
+
 const {writeFile} = require('fs');
 
 const videoFeed = document.querySelector('video');
@@ -49,8 +51,17 @@ function onStreaming(stream) {
         mimeType: "audio/webm;codecs=opus"
     }
 
+    let wavRec = new Recorder(stream);
+
+    recorder.record();
+
+    setTimeout(()=>{
+        recorder.stop();
+    },5000)
 
 
+
+    /*
     let recorder = new MediaRecorder(stream);
     recorder.ondataavailable = (e) => {
         chunks.push(e.data)
@@ -62,17 +73,14 @@ function onStreaming(stream) {
         const blob = new Blob(chunks, options);
         const buffer = Buffer.from(await blob.arrayBuffer());
 
-        const { filePath } = await dialog.showSaveDialog({
-            buttonLabel: 'Save video',
-            defaultPath: `vid-${Date.now()}.webm`
+       
+        writeFile('temp.ogg',buffer,()=>{
+            socket.emit('audio', buffer)
         });
-
-        writeFile(filePath,buffer,()=>console.log("saved"));
-        //socket.emit('audio', buffer)
-
-        
+           
 
     }
+    */
 
   
 

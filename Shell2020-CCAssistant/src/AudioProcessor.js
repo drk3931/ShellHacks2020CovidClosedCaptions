@@ -17,6 +17,11 @@ const audio = {
 
 async function main() {
 
+    const fileName = 'temp.ogg';
+    const file = fs.readFileSync(fileName);
+    const audioBytes = file.toString('base64');
+    audio.content = audioBytes;
+
     const [response] = await client.recognize({
         audio: audio,
         config: config
@@ -35,7 +40,6 @@ io.on('connection',(socket)=>{
 
     socket.on('audio',(data)=>{
         console.log("RECIEVED AUDIO..");
-        audio.content = data;
         main().catch(err=>console.log(err))
     });
 
