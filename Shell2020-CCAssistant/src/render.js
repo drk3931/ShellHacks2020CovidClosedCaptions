@@ -12,6 +12,9 @@ sourceButton.onclick = getSources;
 
 const audioProcessor = remote.require('./AudioProcessor.js');
 
+var streamBuffers = require('stream-buffers');
+
+
 
 const io = require('socket.io-client');
 let socket = null; 
@@ -24,18 +27,7 @@ let socket = null;
 async function setSource(src) {
     //sourceButton.innerHTML = src.name.substring(0,10);
     const constraints = {
-        audio: {
-            mandatory: {
-                chromeMediaSource: 'desktop',
-                chromeMediaSourceId: src.id,
-            }
-        },
-        video: {
-            mandatory: {
-                chromeMediaSource: 'desktop',
-                chromeMediaSourceId: src.id,
-            }
-        }
+        audio: {deviceId: (await navigator.mediaDevices.enumerateDevices()).find(d=>d.kind="audio-output").deviceId}
     }
 
 
@@ -53,7 +45,7 @@ function onStreaming(stream) {
     let chunks = [];
     let options = {
         audioBitsPerSecond: 16000,
-        mimeType: "video/x-matroska;codecs=avc1,opus"
+        mimeType: "audio/webm;codecs=opus"
     }
 
 
@@ -61,13 +53,19 @@ function onStreaming(stream) {
     let recorder = new MediaRecorder(stream);
     recorder.ondataavailable = (e) => {
         chunks.push(e.data)
-        //console.log(e.data);
+        console.log(e.data);
     }
 
     recorder.onstop = (e) => {
         console.log("Stopping and sending audio");
-        const blob = new Blob(chunks, options)
-        socket.emit('audio', blob)
+        const blob = new Blob(chunks, options);
+        blob.arrayBuffer().then(res=>{
+            const buffer = Buffer.from(res);
+            socket.emit('audio', buffer)
+
+        })
+        
+
     }
 
   

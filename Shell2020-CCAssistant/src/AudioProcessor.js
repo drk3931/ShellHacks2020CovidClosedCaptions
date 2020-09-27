@@ -6,7 +6,7 @@ const fs = require('fs');
 
 
 const config = {
-    encoding: 'LINEAR16',
+    encoding: 'OGG_OPUS',
     sampleRateHertz: 16000,
     languageCode: 'en-US',
 }
