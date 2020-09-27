@@ -35,7 +35,7 @@ io.on('connection',(socket)=>{
 
     socket.on('audio',(data)=>{
         console.log("RECIEVED AUDIO..");
-        audio.content = data.toString('base64')
+        audio.content = data;
         main().catch(err=>console.log(err))
     });
 

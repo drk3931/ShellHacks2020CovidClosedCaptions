@@ -1,8 +1,9 @@
 
 const { desktopCapturer, remote } = require('electron');
-const { Menu } = remote;
+const { Menu,dialog } = remote;
 const { ipcRenderer } = require('electron');
 
+const {writeFile} = require('fs');
 
 const videoFeed = document.querySelector('video');
 const translateButton = document.getElementById('translateButton');
@@ -27,13 +28,13 @@ let socket = null;
 async function setSource(src) {
     //sourceButton.innerHTML = src.name.substring(0,10);
     const constraints = {
-        audio: {deviceId: (await navigator.mediaDevices.enumerateDevices()).find(d=>d.kind="audio-output").deviceId}
+        audio: true
     }
 
 
 
     socket = io.connect('http://localhost:3000');
-    const stream = await navigator.mediaDevices.getUserMedia(constraints).then(onStreaming)
+    navigator.mediaDevices.getUserMedia(constraints).then(onStreaming)
 
 
 }
@@ -56,14 +57,19 @@ function onStreaming(stream) {
         console.log(e.data);
     }
 
-    recorder.onstop = (e) => {
+    recorder.onstop = async (e) => {
         console.log("Stopping and sending audio");
         const blob = new Blob(chunks, options);
-        blob.arrayBuffer().then(res=>{
-            const buffer = Buffer.from(res);
-            socket.emit('audio', buffer)
+        const buffer = Buffer.from(await blob.arrayBuffer());
 
-        })
+        const { filePath } = await dialog.showSaveDialog({
+            buttonLabel: 'Save video',
+            defaultPath: `vid-${Date.now()}.webm`
+        });
+
+        writeFile(filePath,buffer,()=>console.log("saved"));
+        //socket.emit('audio', buffer)
+
         
 
     }
@@ -75,7 +81,7 @@ function onStreaming(stream) {
 
     setTimeout(()=>{
         recorder.stop();
-    },5001)
+    },5000)
 
 
 }
