@@ -15,8 +15,8 @@ if (require('electron-squirrel-startup')) { // eslint-disable-line global-requir
 const createWindow = () => {
   // Create the browser window.
   const mainWindow = new BrowserWindow({
-    width: 800,
-    height: 600,
+    width: 640,
+    height: 200,
     webPreferences:{
       nodeIntegration:true,
       enableRemoteModule: true
@@ -25,6 +25,9 @@ const createWindow = () => {
 
   // and load the index.html of the app.
   mainWindow.loadFile(path.join(__dirname, 'index.html'));
+
+  //hide menu bar
+  mainWindow.setMenuBarVisibility(false);
 
   // Open the DevTools.
   mainWindow.webContents.openDevTools();
@@ -54,4 +57,3 @@ app.on('activate', () => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and import them here.
-

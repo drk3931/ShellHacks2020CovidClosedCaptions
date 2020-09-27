@@ -1,16 +1,40 @@
+const {
+  desktopCapturer,
+  remote
+} = require('electron');
+const {
+  Menu
+} = remote;
+const {
+  ipcRenderer
+} = require('electron');
 
-const { desktopCapturer, remote } = require('electron');
-const { Menu,dialog } = remote;
-const { ipcRenderer } = require('electron');
-
-const {Recorder} = require('recorder-js');
-
-const {writeFile} = require('fs');
-
+const leftpane =
+document.getElementById('left-pane');
+const captionText =
+document.getElementById('captions');
 const videoFeed = document.querySelector('video');
-const translateButton = document.getElementById('translateButton');
+const translateSelect = document.getElementsByTagName('select');
 const sourceButton = document.getElementById('sourceButton');
 sourceButton.onclick = getSources;
+
+translateSelect[0].onchange = function() {
+    var index = this.selectedIndex;
+    var inputText = this.children[index].innerHTML.trim();
+    console.log(inputText);
+}
+
+setInterval(()=>{captions.innerHTML+='<br>New Item speech transcribed'},5000)
+
+function appendText() {
+  if(captions.innerHTML == 'Start by choosing a source.'){
+    captions.innerHTML = "First sentence"
+  } else {
+    captionText.innerHTML += "Extra sentences";
+  }
+
+  leftpane.scrollTop = leftpane.scrollHeight;
+}
 
 
 const audioProcessor = remote.require('./AudioProcessor.js');
@@ -28,79 +52,48 @@ let socket = null;
 
 
 async function setSource(src) {
-    //sourceButton.innerHTML = src.name.substring(0,10);
-    const constraints = {
-        audio: true
+  //sourceButton.innerHTML = src.name.substring(0,10);
+  const constraints = {
+    audio: {
+      mandatory: {
+        chromeMediaSource: 'desktop',
+        chromeMediaSourceId: src.id,
+      }
+    },
+    video: {
+      mandatory: {
+        chromeMediaSource: 'desktop',
+        chromeMediaSourceId: src.id
+      }
     }
+  }
+  const stream = await navigator.mediaDevices.getUserMedia(constraints);
+  videoFeed.srcObject = stream;
+  videoFeed.muted = true;
+  videoFeed.play();
 
 
 
-    socket = io.connect('http://localhost:3000');
-    navigator.mediaDevices.getUserMedia(constraints).then(onStreaming)
 
 
 }
-
-function onStreaming(stream) {
-
-
-
-    let chunks = [];
-    let options = {
-        audioBitsPerSecond: 16000,
-        mimeType: "audio/webm;codecs=opus"
-    }
-    
-
-    let recorder = new MediaRecorder(stream);
-    recorder.ondataavailable = (e) => {
-        chunks.push(e.data)
-        console.log(e.data);
-    }
-
-    recorder.onstop = async (e) => {
-        console.log("Stopping and sending audio");
-        const blob = new Blob(chunks, options);
-        const buffer = Buffer.from(await blob.arrayBuffer());
-
-       
-        writeFile('temp.ogg',buffer,()=>{
-            socket.emit('audio', buffer)
-        });
-           
-
-    }
-    
-
-  
-
-
-    recorder.start(5000);
-
-    setTimeout(()=>{
-        recorder.stop();
-    },5000)
-
-
-}
-
 
 async function getSources() {
 
-    const sources = await desktopCapturer.getSources({ types: ['window', 'screen'] });
+  const sources = await desktopCapturer.getSources({
+    types: ['window', 'screen']
+  });
 
 
-    const sourceOptionsMenu = Menu.buildFromTemplate(
-        sources.map(source => {
-            return {
-                label: source.name,
-                click: () => setSource(source)
-            }
-        })
-    );
+  const sourceOptionsMenu = Menu.buildFromTemplate(
+    sources.map(source => {
+      return {
+        label: source.name,
+        click: () => setSource(source)
+      }
+    })
+  );
 
-    sourceOptionsMenu.popup();
+  sourceOptionsMenu.popup();
 
 }
-
-

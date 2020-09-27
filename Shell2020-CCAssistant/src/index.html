@@ -1,17 +1,37 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Hello World!</title>
-    <link rel="stylesheet" href="index.css">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
-    <script defer src="render.js"></script>
-  </head>
-  <body>
-    <h1>ClosedCaptions Assistant</h1>
-    <video></video>
-    <button id="translateButton" class="button">Translate</button>
-    <button id="sourceButton" class="button">Source</button>
 
-  </body>
+<head>
+  <meta charset="UTF-8">
+  <title>Assistant</title>
+  <link rel="stylesheet" href="index.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.0/css/bulma.min.css">
+  <script defer src="render.js"></script>
+</head>
+
+<body>
+
+  <div id = "left-pane" class="split left">
+      <video></video>
+      <p id="captions" class="captions">Start by choosing a source.</p>
+
+  </div>
+
+  <div class="split right">
+    <div class="centered">
+      <select id="translateSelect" class="select">
+        <option>English</option>
+        <option>Spanish</option>
+        <option>Italian</option>
+      </select>
+      <button id="sourceButton" class="button">Source</button>
+      <!--
+      <button onClick = "appendText()" class="button">Add Text</button>
+    -->
+    </div>
+  </div>
+
+
+</body>
+
 </html>
