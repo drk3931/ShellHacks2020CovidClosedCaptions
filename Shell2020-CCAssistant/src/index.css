@@ -1,5 +1,6 @@
 html {
   overflow-y: hidden !important;
+  background: transparent;
 }
 
 body {
@@ -9,7 +10,7 @@ body {
   padding: 2rem;
 }
 
-#transtaleOption {
+#translateSelect {
   margin-bottom: 20px;
 }
 
@@ -38,15 +39,14 @@ body {
 .left {
   width: 75%;
   left: 0;
-  background-color: #E5E5E5;
 
+  background-color: #E5E5E5;
   overflow-y: scroll;
 }
 
 .right {
   width: 25%;
   right: 0;
-  background-color: #fff;
 }
 
 .centered {
@@ -57,11 +57,6 @@ body {
   text-align: center;
 }
 
-.captions-box {
-  position: relative;
-}
-
 .captions {
-  position: fixed;
   bottom: 0;
 }
