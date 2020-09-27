@@ -31,6 +31,8 @@ stream = p.open(format = pyaudio.paInt16,
                 as_loopback = True)
 
 
+def sendToGoogleImproved(stream):
+    recorded_frames = []
 
 
 

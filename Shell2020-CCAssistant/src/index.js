@@ -1,6 +1,10 @@
 const { app, BrowserWindow,ipcMain } = require('electron');
 const path = require('path');
 
+
+process.env.GCLOUD_PROJECT = 'shellhacks-290802'
+process.env.GOOGLE_APPLICATION_CREDENTIALS = 'service_acc.json'
+
 // Handle creating/removing shortcuts on Windows when installing/uninstalling.
 if (require('electron-squirrel-startup')) { // eslint-disable-line global-require
   app.quit();
