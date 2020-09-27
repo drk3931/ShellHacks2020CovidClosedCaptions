@@ -54,12 +54,6 @@ let socket = null;
 async function setSource(src) {
   //sourceButton.innerHTML = src.name.substring(0,10);
   const constraints = {
-    audio: {
-      mandatory: {
-        chromeMediaSource: 'desktop',
-        chromeMediaSourceId: src.id,
-      }
-    },
     video: {
       mandatory: {
         chromeMediaSource: 'desktop',
